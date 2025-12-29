@@ -1,14 +1,7 @@
-import { groqService } from './services/groq';
-import { cerebrasService } from './services/cerebras';
+import { createServices } from './services';
 import type { AIService, ChatMessage } from './types';
 
-const services: AIService[] = [
-  groqService,
-  cerebrasService,
-  // Google Gemini
-  // OpenRouter
-  // otro servicio incluso local
-]
+const services: AIService[] = await createServices();
 let currentServiceIndex = 0;
 
 function getNextService() {
